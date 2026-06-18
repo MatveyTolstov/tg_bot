@@ -11,7 +11,6 @@ class Role(Base):
 
     id: Mapped[int] = mapped_column(primary_key=True)
     role_name: Mapped[str] = mapped_column(String(50), nullable=False)
-
     users: Mapped[list["User"]] = relationship(back_populates="role")
 
 
@@ -21,6 +20,6 @@ class User(Base):
     id: Mapped[int] = mapped_column(primary_key=True)
     telegram_id: Mapped[int] = mapped_column(BigInteger, unique=True)
     username: Mapped[str] = mapped_column(String(150), nullable=False)
+    password: Mapped[str] = mapped_column(String(200), nullable=False)
     role_id: Mapped[int] = mapped_column(ForeignKey("roles.id"))
-
     role: Mapped["Role"] = relationship(back_populates="users")

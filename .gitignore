@@ -1,3 +1,4 @@
 #local enviroment
 .venv/*
 env.env
+.env
